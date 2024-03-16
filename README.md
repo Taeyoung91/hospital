@@ -120,7 +120,7 @@ HTTP 200
 /patient/2
 
 {
-  "name": "배우리",
+  "name": "배우리",
   "gender": "F",
   "birth": "1994-07-06",
   "mobile": "010-3411-3412"
