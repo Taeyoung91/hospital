@@ -5,6 +5,7 @@ import com.hdjunction.hospital.domain.patient.dto.search.SearchPatientReq;
 import com.hdjunction.hospital.domain.patient.enumeration.SearchType;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -20,11 +21,17 @@ public class SearchPatientRepositoryImpl implements SearchPatientRepository {
 
   @Override
   public List<Patient> find(SearchPatientReq searchPatientReq) {
-    return queryFactory.select(
-      Projections.fields(Patient.class, patient.id, patient.name, patient.registrationNumber, patient.gender, patient.birth, patient.mobile))
+    JPAQuery<Patient> query = queryFactory.select(
+        Projections.fields(Patient.class, patient.id, patient.name, patient.registrationNumber, patient.gender, patient.birth, patient.mobile))
       .from(patient)
-      .where(condition(searchPatientReq))
-      .fetch();
+      .where(condition(searchPatientReq));
+
+    if (searchPatientReq.isUsePaging()) {
+      query.offset(Math.max(0, searchPatientReq.getPageNo() - 1) * searchPatientReq.getPageSize())
+        .limit(searchPatientReq.getPageSize());
+    }
+
+    return query.fetch();
   }
 
   private BooleanExpression condition(SearchPatientReq searchPatientReq) {
