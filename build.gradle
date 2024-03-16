@@ -28,7 +28,20 @@ dependencies {
 
 	// springdoc-openapi-ui
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
+
+	implementation group: 'com.querydsl', name: 'querydsl-spatial', version: '5.0.0'
+	implementation "com.querydsl:querydsl-core:5.0.0"
+	implementation "com.querydsl:querydsl-collections"
+	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
+	annotationProcessor 'com.querydsl:querydsl-apt:5.0.0:jakarta'
+	annotationProcessor 'jakarta.annotation:jakarta.annotation-api'
+	annotationProcessor 'jakarta.persistence:jakarta.persistence-api'
+
 }
+
+// Querydsl 설정
+def generated = "$buildDir/generated"
+
 tasks.named('test') {
 	useJUnitPlatform()
 }

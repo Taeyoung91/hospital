@@ -1,6 +1,7 @@
 package com.hdjunction.hospital.domain.patient.controller;
 
 import com.hdjunction.hospital.domain.patient.dto.search.SearchPatientDetailRes;
+import com.hdjunction.hospital.domain.patient.dto.search.SearchPatientReq;
 import com.hdjunction.hospital.domain.patient.dto.search.SearchPatientRes;
 import com.hdjunction.hospital.domain.patient.service.patient.SearchPatientService;
 import lombok.RequiredArgsConstructor;
@@ -21,8 +22,8 @@ public class SearchPatientController {
   private final SearchPatientService searchPatientService;
 
   @GetMapping
-  public ResponseEntity<List<SearchPatientRes>> all() {
-    return new ResponseEntity<>(searchPatientService.all(), HttpStatus.OK);
+  public ResponseEntity<List<SearchPatientRes>> list(SearchPatientReq searchPatientReq) {
+    return new ResponseEntity<>(searchPatientService.list(searchPatientReq), HttpStatus.OK);
   }
 
   @GetMapping("/{id}")
