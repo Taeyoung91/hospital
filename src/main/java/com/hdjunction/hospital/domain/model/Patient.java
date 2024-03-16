@@ -1,8 +1,18 @@
 package com.hdjunction.hospital.domain.model;
 
+import com.hdjunction.hospital.domain.patient.dto.update.UpdatePatientReq;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Table(name = "patient")
 public class Patient {
 
   @Id
@@ -22,4 +32,10 @@ public class Patient {
 
   private String mobile;
 
+  public void update(UpdatePatientReq updatePatientReq) {
+    this.name = updatePatientReq.getName();
+    this.gender = updatePatientReq.getGender();
+    this.birth = updatePatientReq.getBirth();
+    this.mobile = updatePatientReq.getMobile();
+  }
 }

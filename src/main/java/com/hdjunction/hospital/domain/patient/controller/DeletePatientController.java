@@ -1,6 +1,6 @@
 package com.hdjunction.hospital.domain.patient.controller;
 
-import com.hdjunction.hospital.domain.patient.service.DeletePatientService;
+import com.hdjunction.hospital.domain.patient.service.patient.DeletePatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,8 +16,8 @@ public class DeletePatientController {
   private final DeletePatientService deletePatientService;
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<Void> delete(@PathVariable Long id) {
-    deletePatientService.delete(id);
+  public ResponseEntity<Void> byId(@PathVariable Long id) {
+    deletePatientService.byId(id);
     return ResponseEntity.noContent().build();
   }
 }

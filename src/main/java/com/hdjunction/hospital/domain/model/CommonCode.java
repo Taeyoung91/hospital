@@ -1,11 +1,12 @@
 package com.hdjunction.hospital.domain.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import lombok.Getter;
+
 
 @Entity
+@Getter
+@Table(name = "common_code")
 public class CommonCode {
 
   @Id

@@ -1,7 +1,7 @@
 package com.hdjunction.hospital.domain.patient.controller;
 
 import com.hdjunction.hospital.domain.patient.dto.create.CreatePatientReq;
-import com.hdjunction.hospital.domain.patient.service.CreatePatientService;
+import com.hdjunction.hospital.domain.patient.service.patient.CreatePatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +18,8 @@ public class CreatePatientController {
   private final CreatePatientService createPatientService;
 
   @PostMapping
-  public ResponseEntity<Void> createPatient(@RequestBody CreatePatientReq createPatientReq) {
-    createPatientService.save(createPatientReq);
+  public ResponseEntity<Void> one(@RequestBody CreatePatientReq createPatientReq) {
+    createPatientService.one(createPatientReq);
     return new ResponseEntity<>(HttpStatus.OK);
   }
 

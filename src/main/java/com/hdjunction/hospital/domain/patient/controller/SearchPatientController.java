@@ -2,7 +2,7 @@ package com.hdjunction.hospital.domain.patient.controller;
 
 import com.hdjunction.hospital.domain.patient.dto.search.SearchPatientDetailRes;
 import com.hdjunction.hospital.domain.patient.dto.search.SearchPatientRes;
-import com.hdjunction.hospital.domain.patient.service.SearchPatientService;
+import com.hdjunction.hospital.domain.patient.service.patient.SearchPatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,13 +21,13 @@ public class SearchPatientController {
   private final SearchPatientService searchPatientService;
 
   @GetMapping
-  public ResponseEntity<List<SearchPatientRes>> getAllPatients() {
-    return new ResponseEntity<>(searchPatientService.findAllPatients(), HttpStatus.OK);
+  public ResponseEntity<List<SearchPatientRes>> all() {
+    return new ResponseEntity<>(searchPatientService.all(), HttpStatus.OK);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<SearchPatientDetailRes> getPatientById(@PathVariable Long id) {
-    return new ResponseEntity<>(searchPatientService.findPatientById(id), HttpStatus.OK);
+  public ResponseEntity<SearchPatientDetailRes> byId(@PathVariable Long id) {
+    return new ResponseEntity<>(searchPatientService.byId(id), HttpStatus.OK);
   }
 
 }

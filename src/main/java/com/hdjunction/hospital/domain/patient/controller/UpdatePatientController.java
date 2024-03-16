@@ -1,7 +1,7 @@
 package com.hdjunction.hospital.domain.patient.controller;
 
 import com.hdjunction.hospital.domain.patient.dto.update.UpdatePatientReq;
-import com.hdjunction.hospital.domain.patient.service.UpdatePatientService;
+import com.hdjunction.hospital.domain.patient.service.patient.UpdatePatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +15,8 @@ public class UpdatePatientController {
   private final UpdatePatientService updatePatientService;
 
   @PutMapping("/{id}")
-  public ResponseEntity<Void> updatePatient(@PathVariable Long id, @RequestBody UpdatePatientReq updatePatientReq) {
-    updatePatientService.update(updatePatientReq);
+  public ResponseEntity<Void> byId(@PathVariable Long id, @RequestBody UpdatePatientReq updatePatientReq) {
+    updatePatientService.byId(id, updatePatientReq);
     return new ResponseEntity<>(HttpStatus.OK);
   }
 }
